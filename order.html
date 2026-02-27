@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+          integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="CSS/index.css"/>
+</head>
+<body>
+<div class="container">
+    <header class="store-head">
+        <div class="breadcrum">
+            <span>Your order history in one place</span>
+        </div>
+        <nav class="search-content">
+            <div class="logo">
+                <i class="fas fa-cart-shopping"></i>
+            </div>
+            <span class="tag">JumiaMini</span>
+            <div class="cart">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span id="count" class="cart-count">0</span>
+                <a href="/cart.html" class="cart-link">cart</a>
+            </div>
+        </nav>
+        <div class="nav-links">
+            <a href="/index.html" class="home " title="homepage"><i class="fas fa-home"></i>Home</a>
+            <a href="/order.html" class="orders active" title="Orders"><i class="fas fa-list"></i>Orders</a>
+        </div>
+    </header>
+    <main class="orders-page">
+        <button type="button" class="back-btn" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> Back
+        </button>
+        <h1>My Orders</h1>
+        <div id="orders-container" class="orders-container">
+            <!-- Orders will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="info1">
+                <div class="footer-logo">
+                    <i class="fas fa-cart-shopping"></i>
+                    <span class="footer-tag">JumiaMini</span>
+                </div>
+                <p>Ghana's fastest-growing <br>
+                    online marketplace. Shop with confidence — quality<br>
+                    products, <br>
+                    best prices, fast delivery.
+                </p>
+            </div>
+            <div class="info2">
+                <span>Shop</span>
+                <p>Phones & Tablets</p>
+                <p>Electronics</p>
+                <p>Fashion</p>
+                <p>Computing</p>
+            </div>
+            <div class="info3">
+                <span>Help</span>
+                <p>Contact Us</p>
+                <p>Shipping & Delivery</p>
+                <p>Return Policy</p>
+                <p>FAQ</p>
+            </div>
+            <div class="info4">
+                <span>Payment Methods</span>
+                <p>Mobile Money (MTN, Vodafone, AirtelTigo)</p>
+                <p>Cash on Delivery</p>
+                <p>Bank Transfer</p>
+                <hr>
+                <span>Need help? Call us at</span>
+                <p>0554373790</p>
+            </div>
+        </div>
+        <hr>
+        <div class="footer-links">
+            <div class="right">
+                © 2026 JumiaMini. All rights reserved.
+            </div>
+            <div class="team-message">
+               Built with love 💖 by Group 8.
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    const ordersContainer = document.getElementById("orders-container");
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    function displayOrders() {
+        if(orders.length === 0) {
+            ordersContainer.innerHTML = "<p>You have no orders yet.</p>";
+            return;
+        }
+
+        ordersContainer.innerHTML = "";
+        orders.forEach(order => {
+            const totalItems = order.items.reduce((sum, item) => sum + item.quantity, 0);
+
+            const orderCard = document.createElement("div");
+            orderCard.classList.add("order-card");
+            orderCard.innerHTML = `
+                <h3>Order: ${order.orderNumber}</h3>
+                <p><strong>Date:</strong> ${order.date}</p>
+                <p><strong>Items:</strong> ${totalItems}</p>
+                <p><strong>Total:</strong> GH₵ ${order.total}</p>
+                <p><strong>Status:</strong> ${order.status}</p>
+            `;
+            ordersContainer.appendChild(orderCard);
+        });
+    }
+
+    displayOrders();
+
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById("count").textContent = totalItems;
+    }
+
+    updateCartCount();
+
+    function goBack() {
+        window.history.back();
+    }   
+</script>
+</body>
+</html>
