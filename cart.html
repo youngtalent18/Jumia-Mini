@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+          integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="CSS/index.css"/>
+</head>
+<body>
+<div class="container">
+    <header class="store-head">
+        <div class="breadcrum">
+            <span>Review your cart items and proceed to checkout</span>
+        </div>
+        <nav class="search-content">
+            <div class="logo">
+                <i class="fas fa-cart-shopping"></i>
+            </div>
+            <span class="tag">JumiaMini</span>
+            <div class="cart">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span id="count" class="cart-count">0</span>
+                <span>cart</span>
+            </div>
+        </nav>
+        <div class="nav-links">
+            <a href="/index.html" class="home " title="homepage"><i class="fas fa-home"></i>Home</a>
+            <a href="/cart.html" class="orders active" title="Cart"><i class="fas fa-shopping-cart"></i>Cart</a>
+        </div>
+    </header>
+
+    <main class="cart-page">
+        <button type="button" class="back-btn" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> Back
+        </button>
+        <h1>My Cart</h1>
+        <div id="cart-container" class="cart-container">
+            <!-- Cart items will appear here -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="info1">
+                <div class="footer-logo">
+                    <i class="fas fa-cart-shopping"></i>
+                    <span class="footer-tag">JumiaMini</span>
+                </div>
+                <p>Ghana's fastest-growing <br>
+                    online marketplace. Shop with confidence — quality<br>
+                    products, <br>
+                    best prices, fast delivery.
+                </p>
+            </div>
+            <div class="info2">
+                <span>Shop</span>
+                <p>Phones & Tablets</p>
+                <p>Electronics</p>
+                <p>Fashion</p>
+                <p>Computing</p>
+            </div>
+            <div class="info3">
+                <span>Help</span>
+                <p>Contact Us</p>
+                <p>Shipping & Delivery</p>
+                <p>Return Policy</p>
+                <p>FAQ</p>
+            </div>
+            <div class="info4">
+                <span>Payment Methods</span>
+                <p>Mobile Money (MTN, Vodafone, AirtelTigo)</p>
+                <p>Cash on Delivery</p>
+                <p>Bank Transfer</p>
+                <hr>
+                <span>Need help? Call us at</span>
+                <p>0554373790</p>
+            </div>
+        </div>
+        <hr>
+        <div class="footer-links">
+            <div class="right">
+                © 2026 JumiaMini. All rights reserved.
+            </div>
+            <div class="team-message">
+               Built with love 💖 by Group 8.
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    const cartContainer = document.getElementById("cart-container");
+
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById("count").textContent = totalItems;
+    }
+
+    function displayCart() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        if(cart.length === 0) {
+            cartContainer.innerHTML = `
+                <div class="empty-cart">
+                    <img src="images/image.png" alt="Empty Cart">
+                    <h2>Your cart is empty!</h2>
+                    <p>Add products to your cart and they will appear here.</p>
+                </div>
+            `;
+            return;
+        }
+
+        let totalAmount = 0;
+
+        cartContainer.innerHTML = `
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Unit Price (GHS)</th>
+                        <th>Quantity</th>
+                        <th>Subtotal (GHS)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${cart.map(item => {
+                        const subtotal = item.price * item.quantity;
+                        totalAmount += subtotal;
+                        return `
+                        <tr data-id="${item.id}">
+                            <td>
+                                <img src="${item.image}" alt="${item.name}" class="cart-img">
+                                <span>${item.name}</span>
+                            </td>
+                            <td>${item.price}</td>
+                            <td>
+                                <input type="number" class="qty-input" min="1" value="${item.quantity}">
+                            </td>
+                            <td class="subtotal">${subtotal}</td>
+                            <td>
+                                <button class="remove-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        `;
+                    }).join('')}
+                </tbody>
+            </table>
+            <div class="cart-total">
+                <h3>Total: GH₵ <span id="total-amount">${totalAmount}</span></h3>
+                <button id="clear-cart">Clear Cart</button>
+                <button id="checkout-btn">Proceed to Checkout</button>
+            </div>
+        `;
+
+        // Add listeners for remove buttons and quantity inputs
+        cartContainer.querySelectorAll(".remove-btn").forEach(btn => {
+            btn.addEventListener("click", e => {
+                const id = parseInt(e.target.closest("tr").dataset.id);
+                removeFromCart(id);
+            });
+        });
+
+        cartContainer.querySelectorAll(".qty-input").forEach(input => {
+            input.addEventListener("change", e => {
+                const id = parseInt(e.target.closest("tr").dataset.id);
+                const value = parseInt(e.target.value);
+                updateQuantity(id, value);
+            });
+        });
+
+        document.getElementById("clear-cart").addEventListener("click", () => {
+            localStorage.removeItem("cart");
+            displayCart();
+            updateCartCount();
+        });
+
+        document.getElementById("checkout-btn").addEventListener("click", () => {
+            window.location.href = "checkout.html";
+        });
+    }
+
+    function removeFromCart(id) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart = cart.filter(item => item.id !== id);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        displayCart();
+        updateCartCount();
+    }
+
+    function updateQuantity(id, qty) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const product = cart.find(item => item.id === id);
+        if(product) {
+            product.quantity = qty;
+            localStorage.setItem("cart", JSON.stringify(cart));
+            displayCart();
+            updateCartCount();
+        }
+    }
+
+    function goBack() {
+        window.history.back();
+    }
+
+    updateCartCount();
+    displayCart();
+</script>
+</body>
+</html>
