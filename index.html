@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 8</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+          integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="CSS/index.css"/>
+</head>
+<body>
+    <div id="toast" class="toast"></div>
+    <div class="container">
+        <header class="store-head">
+            <div class="breadcrum">
+                <span>free delivery on selected items above GHc500 | Everywhere in Ghana</span>
+                <span class="faq">? help</span>
+            </div>
+            <nav class="search-content">
+                <div class="logo">
+                    <i class="fas fa-cart-shopping"></i>
+                </div>
+                <span class="tag">JumiaMini</span>
+                <div class="search">
+                    <input type="text" id="searchInput" placeholder="Search for products, brands and more"/>
+                    <button type="button" class="search-btn" title="Search"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="cart">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <span id="count" class="cart-count">0</span>
+                    <a href="/cart.html" class="cart-link">cart</a>
+                </div>
+            </nav>
+            <div class="nav-links">
+                <a href="index.html" class="home active" title="homepage"><i class="fas fa-home"></i>Home</a>
+                <a href="order.html" class="orders" title="Orders"><i class="fas fa-list"></i>Orders</a>
+            </div>
+        </header>
+        <section class="hero">
+            <span class="deal"><i class="fas fa-fire"></i>Super deals — up to 50% off</span>
+            <div class="hero-content">
+                <h1>Shop the Best <br>Deals in Ghana.</h1>
+                <p>Discover thousands of products at unbeatable prices. 
+                    Phones, fashion, electronics, <br> 
+                    groceries — delivered to your doorstep across Ghana.
+                </p>
+            </div>
+            <div class="btn">
+                <a href="index.html" class="shop-btn" type="button" title="shop">Shop Phones</a>
+                <a href="index.html" class="categories-btn" type="button" title="categories">Shop Fashion</a>
+            </div>
+            <img class="hero-img" src="images/hero.png" alt="">
+        </section>
+        <section class="features">
+            <div class="delivery">
+                <i class="fas fa-truck"></i>
+                <div class="delivery-message">
+                    <span>Free Delivery</span>
+                    <span>On orders over GHC500</span>
+                </div>
+            </div>
+            <div class="delivery">
+                <i class="fas fa-shield-alt"></i>
+                <div class="delivery-message">
+                    <span>Secure Payment</span>
+                    <span>100% Secure Payment</span>
+                </div>
+            </div>
+            <div class="delivery">
+                <i class="fas fa-zap"></i>
+                <div class="delivery-message">
+                    <span>Flash Deals</span>
+                    <span>New Offers Daily</span>
+                </div>
+            </div>
+            <div class="delivery">
+                <i class="fas fa-tag"></i>
+                <div class="delivery-message">
+                    <span>Best Prices</span>
+                    <span>Guaranteed Lowest Price</span>
+                </div>
+            </div>
+        </section>
+        <section class="filters">
+            <div class="filtered-items">
+                <span class="icon"><i class="fas fa-filter"></i>Filter</span>
+                <div class="filter-options">
+                    <button type="button" class="option active" href="#" title="Filter option 1">All </button>
+                    <button type="button" class="option" href="#" title="Filter option 2">Phones</button>
+                    <button type="button" class="option" href="#" title="Filter option 3">Grocery</button>
+                    <button type="button" class="option" href="#" title="Filter option 4">Fashion </button>
+                    <button type="button" class="option" href="#" title="Filter option 5">Electronics</button>
+                    <button type="button" class="option" href="#" title="Filter option 6">Computing</button>
+                </div>
+            </div>
+            <div class="sort">
+                <span id="number"> | 22 products</span>
+                <select title="options" name="sort" id="sort-select">
+                    <option value="">Popularity</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Top Rated</option>
+                </select>
+            </div>
+        </section>
+        <div class="product-grid" id="productGrid">
+
+        </div>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="info1">
+                    <div class="footer-logo">
+                        <i class="fas fa-cart-shopping"></i>
+                        <span class="footer-tag">JumiaMini</span>
+                    </div>
+                    <p>Ghana's fastest-growing <br>
+                        online marketplace. Shop with confidence — quality<br>
+                        products, <br>
+                        best prices, fast delivery.
+                    </p>
+                </div>
+                <div class="info2">
+                    <span>Shop</span>
+                    <p>Phones & Tablets</p> 
+                    <p>Electronics</p>
+                    <p>Fashion</p>
+                    <p>Computing</p>
+                </div>
+                <div class="info3">
+                    <span>Help</span>
+                    <p>Contact Us</p>
+                    <p>Shipping & Delivery</p>
+                    <p>Return Policy</p>
+                    <p>FAQ</p>
+                </div>
+                <div class="info4">
+                    <span>Payment Methods</span>
+                    <p>Mobile Money (MTN, Vodafone, AirtelTigo)</p>
+                    <p>Cash on Delivery</p>
+                    <p>Bank Transfer</p>
+                    <hr>
+                    <span>Need help? Call us at</span>
+                    <p>0554373790</p>
+                </div>
+            </div>
+            <hr>
+            <div class="footer-links">
+                <div class="right">
+                    © 2026 JumiaMini. All rights reserved.
+                </div>
+                <div class="team-message">
+                   Built with love 💖 by Group 8.
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="JS/data.js"></script>
+    <script src="JS/main.js"></script>
+</body>
+</html>
