@@ -51,7 +51,7 @@ function displayProducts(productArray) {
 }
 
 searchInput.addEventListener("input", function () {
-  const value = this.value.toLowerCase();
+  const value = this.value.toLowerCase().trim();
 
   filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(value)
