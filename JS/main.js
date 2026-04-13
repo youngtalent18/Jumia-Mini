@@ -30,7 +30,7 @@ function displayProducts(productArray) {
     productGrid.innerHTML += `
       <div class="product-card">
         <div class="badge">-${discount}%</div>
-        <img src="${product.image}" alt="${product.name}" />
+        <img src="images/${product.image}" alt="${product.name}" />
         <h3>${product.name}</h3>
         <div class="price-box">
           <span class="price">GHS ${product.price}</span>
