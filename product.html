@@ -18,9 +18,9 @@
                 <span class="faq">? help</span>
             </div>
             <nav class="search-content">
-                <div class="logo">
+                <a href="index.html" title="home" class="logo">
                     <i class="fas fa-cart-shopping"></i>
-                </div>
+                </a>
                 <span class="tag">JumiaMini</span>
                 <div class="search">
                     <input type="text" placeholder="Search for products, brands and more"/>
@@ -29,12 +29,12 @@
                 <div class="cart">
                     <i class="fa-solid fa-basket-shopping"></i>
                     <span id="count" class="cart-count">0</span>
-                    <a href="/cart.html" class="cart-link">cart</a>
+                    <a href="cart.html" class="cart-link">cart</a>
                 </div>
             </nav>
             <div class="nav-links">
-                <a href="/index.html" class="home " title="homepage"><i class="fas fa-home"></i>Home</a>
-                <a href="/order.html" class="orders active" title="Orders"><i class="fas fa-list"></i>Orders</a>
+                <a href="index.html" class="home " title="homepage"><i class="fas fa-home"></i>Home</a>
+                <a href="order.html" class="orders active" title="Orders"><i class="fas fa-list"></i>Orders</a>
             </div>
         </header>
         <main class="product-page">
@@ -42,25 +42,6 @@
                 <i class="fas fa-arrow-left"></i> Back
             </button>
             <div id="product-container" class="product-container">
-                <div class="product-image">
-                    <img src="images/phone.jpg" alt="Product Image">
-                </div>
-
-                <div class="product-details">
-                    <h2 class="product-title">Samsung Galaxy A14</h2>
-                    <p class="product-price">GH₵ 1,250</p>
-
-                    <p class="product-description">
-                        High performance smartphone with long battery life and
-                        crystal clear display.
-                    </p>
-                    <div class="quantity">
-                        <label>Quantity:</label>
-                        <input type="number" value="1" min="1" title="Product quantity">
-                    </div>
-                    <button type="button" class="add-to-cart">Add to Cart</button>
-                </div>
-
             </div>
         </main>
         <footer class="footer">
@@ -124,7 +105,7 @@
             const container = document.getElementById("product-container");
             container.innerHTML = `
                 <div class="product-image">
-                    <img src="${selectedProduct.image}" alt="${selectedProduct.name}">
+                    <img src="images/${selectedProduct.image}" alt="${selectedProduct.name}">
                 </div>
                 <div class="product-details">
                     <h2 class="product-title">${selectedProduct.name}</h2>
