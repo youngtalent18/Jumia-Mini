@@ -23,28 +23,47 @@ The goal is to practice frontend development, DOM manipulation, and basic data p
 👤 Simple user session simulation (optional if added)
 
 🛠️ Technologies Used
+
 HTML5 – Structure of the website
+
 CSS3 – Styling and layout
+
 JavaScript (Vanilla JS) – Logic and interactivity
+
 LocalStorage – Temporary data storage (no backend)
 
 📂 Project Structure
 project-folder/
+
 │
+
 ├── index.html
+
 ├── cart.html
+
 ├── product.html
+
 │
 ├── css/
+
 │   └── style.css
+
 │
+
 ├── js/
+
 │   ├── main.js
+
 │   ├── cart.js
+
 │   └── products.js
+
 │
+
 └── images/
+
     └── (product images)
+    
     
 ⚙️ How It Works
 Products are stored as JavaScript objects or arrays.
