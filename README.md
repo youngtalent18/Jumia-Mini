@@ -9,11 +9,17 @@ The goal is to practice frontend development, DOM manipulation, and basic data p
 🚀 Features
 
 🏬 Product listing page
+
 🔍 Product search/filter (if implemented)
+
 🛒 Add to cart functionality
+
 🧺 Cart management (increase, decrease, remove items)
+
 💾 Data persistence using localStorage
+
 📱 Responsive UI (mobile + desktop)
+
 👤 Simple user session simulation (optional if added)
 
 🛠️ Technologies Used
