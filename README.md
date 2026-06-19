@@ -1,5 +1,7 @@
 🛒 Jumia-Like E-Commerce Store (Frontend Only)
+
 📌 Project Overview
+
 This is a school project that simulates an e-commerce platform similar to Jumia.
 It is built using HTML, CSS, and JavaScript only, with LocalStorage used as a fake database (no backend or server).
 The goal is to practice frontend development, DOM manipulation, and basic data persistence in the browser.
